@@ -1,0 +1,101 @@
+--@shared
+cards = {
+	[ 1] = {suit="Hearts", rank= 1, name="Ace of Hearts"},
+	[ 2] = {suit="Hearts", rank= 2, name="2 of Hearts"},
+	[ 3] = {suit="Hearts", rank= 3, name="3 of Hearts"},
+	[ 4] = {suit="Hearts", rank= 4, name="4 of Hearts"},
+	[ 5] = {suit="Hearts", rank= 5, name="5 of Hearts"},
+	[ 6] = {suit="Hearts", rank= 6, name="6 of Hearts"},
+	[ 7] = {suit="Hearts", rank= 7, name="7 of Hearts"},
+	[ 8] = {suit="Hearts", rank= 8, name="8 of Hearts"},
+	[ 9] = {suit="Hearts", rank= 9, name="9 of Hearts"},
+	[10] = {suit="Hearts", rank=10, name="10 of Hearts"},
+	[11] = {suit="Hearts", rank=11, name="Jack of Hearts"},
+	[12] = {suit="Hearts", rank=12, name="Queen of Hearts"},
+	[13] = {suit="Hearts", rank=13, name="King of Hearts"},
+	[14] = {suit="Diamonds", rank= 1, name="Ace of Diamonds"},
+	[15] = {suit="Diamonds", rank= 2, name="2 of Diamonds"},
+	[16] = {suit="Diamonds", rank= 3, name="3 of Diamonds"},
+	[17] = {suit="Diamonds", rank= 4, name="4 of Diamonds"},
+	[18] = {suit="Diamonds", rank= 5, name="5 of Diamonds"},
+	[19] = {suit="Diamonds", rank= 6, name="6 of Diamonds"},
+	[20] = {suit="Diamonds", rank= 7, name="7 of Diamonds"},
+	[21] = {suit="Diamonds", rank= 8, name="8 of Diamonds"},
+	[22] = {suit="Diamonds", rank= 9, name="9 of Diamonds"},
+	[23] = {suit="Diamonds", rank=10, name="10 of Diamonds"},
+	[24] = {suit="Diamonds", rank=11, name="Jack of Diamonds"},
+	[25] = {suit="Diamonds", rank=12, name="Queen of Diamonds"},
+	[26] = {suit="Diamonds", rank=13, name="King of Diamonds"},
+	[27] = {suit="Clubs", rank= 1, name="Ace of Clubs"},
+	[28] = {suit="Clubs", rank= 2, name="2 of Clubs"},
+	[29] = {suit="Clubs", rank= 3, name="3 of Clubs"},
+	[30] = {suit="Clubs", rank= 4, name="4 of Clubs"},
+	[31] = {suit="Clubs", rank= 5, name="5 of Clubs"},
+	[32] = {suit="Clubs", rank= 6, name="6 of Clubs"},
+	[33] = {suit="Clubs", rank= 7, name="7 of Clubs"},
+	[34] = {suit="Clubs", rank= 8, name="8 of Clubs"},
+	[35] = {suit="Clubs", rank= 9, name="9 of Clubs"},
+	[36] = {suit="Clubs", rank=10, name="10 of Clubs"},
+	[37] = {suit="Clubs", rank=11, name="Jack of Clubs"},
+	[38] = {suit="Clubs", rank=12, name="Queen of Clubs"},
+	[39] = {suit="Clubs", rank=13, name="King of Clubs"},
+	[40] = {suit="Spades", rank= 1, name="Ace of Spades"},
+	[41] = {suit="Spades", rank= 2, name="2 of Spades"},
+	[42] = {suit="Spades", rank= 3, name="3 of Spades"},
+	[43] = {suit="Spades", rank= 4, name="4 of Spades"},
+	[44] = {suit="Spades", rank= 5, name="5 of Spades"},
+	[45] = {suit="Spades", rank= 6, name="6 of Spades"},
+	[46] = {suit="Spades", rank= 7, name="7 of Spades"},
+	[47] = {suit="Spades", rank= 8, name="8 of Spades"},
+	[48] = {suit="Spades", rank= 9, name="9 of Spades"},
+	[49] = {suit="Spades", rank=10, name="10 of Spades"},
+	[50] = {suit="Spades", rank=11, name="Jack of Spades"},
+	[51] = {suit="Spades", rank=12, name="Queen of Spades"},
+	[52] = {suit="Spades", rank=13, name="King of Spades"}
+}
+for i, card in pairs(cards) do
+	card.index = i
+end
+local red, black = Color(255, 0, 0), Color(0, 0, 0)
+suitColors = {
+	Hearts = red,
+	Diamonds = red,
+	Clubs = black,
+	Spades = black
+}
+suitLabels = {
+	Hearts = "♥",
+	Diamonds = "♦",
+	Clubs = "♣",
+	Spades = "♠",
+}
+rankShortLabels = {
+	[ 1] = "A",
+	[ 2] = "2",
+	[ 3] = "3",
+	[ 4] = "4",
+	[ 5] = "5",
+	[ 6] = "6",
+	[ 7] = "7",
+	[ 8] = "8",
+	[ 9] = "9",
+	[10] = "10",
+	[11] = "J",
+	[12] = "Q",
+	[13] = "K"
+}
+rankLabels = {
+	[ 1] = "Ace",
+	[ 2] = "2",
+	[ 3] = "3",
+	[ 4] = "4",
+	[ 5] = "5",
+	[ 6] = "6",
+	[ 7] = "7",
+	[ 8] = "8",
+	[ 9] = "9",
+	[10] = "10",
+	[11] = "Jack",
+	[12] = "Queen",
+	[13] = "King"
+}
