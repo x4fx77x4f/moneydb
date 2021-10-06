@@ -1,10 +1,8 @@
 --@name Video Poker
---@include libs/fh_debouncer.lua
 --@include casino/moneydb/sh_constants.lua
 --@include casino/poker/sh_cards.lua
 --@include casino/poker/sh_errors.lua
 --@include casino/poker/sh_payout.lua
-dofile('libs/fh_debouncer.lua')
 dofile('casino/moneydb/sh_constants.lua')
 dofile('casino/poker/sh_cards.lua')
 dofile('casino/poker/sh_errors.lua')
@@ -280,7 +278,8 @@ hook.add('KeyPress', '', function(ply, btn)
 		not curx or
 		activeError or
 		(drawTime and timer.systime() < drawTime+1.5) or
-		(activePlayer ~= nil and ply ~= activePlayer)
+		(activePlayer ~= nil and ply ~= activePlayer) or
+		not isFirstTimePredicted()
 	then
 		return
 	end
@@ -314,7 +313,8 @@ hook.add('KeyRelease', '', function(ply, btn)
 	if
 		ply ~= me or
 		btn ~= IN_KEY.USE or
-		(activePlayer ~= nil and ply ~= activePlayer)
+		(activePlayer ~= nil and ply ~= activePlayer) or
+		not isFirstTimePredicted()
 	then
 		return
 	end

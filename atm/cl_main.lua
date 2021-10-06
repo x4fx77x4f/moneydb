@@ -1,9 +1,7 @@
 --@name ATM
 --@client
 --@include casino/moneydb/sh_constants.lua
---@include libs/fh_debouncer.lua
 dofile('casino/moneydb/sh_constants.lua')
-dofile('libs/fh_debouncer.lua')
 
 local ready = false
 
@@ -145,13 +143,10 @@ hook.add('render', '', function()
 end)
 
 local player = player()
--- for some reason, the KeyPress hook was getting run 5 times!!!
-local used = false
 hook.add('KeyPress', '', function(ply, btn)
-	if ply ~= player or btn ~= IN_KEY.USE or used then
+	if ply ~= player or btn ~= IN_KEY.USE or not isFirstTimePredicted() then
 		return
 	end
-	used = true
 	if not cx or not buttons then
 		return
 	end
@@ -167,7 +162,7 @@ hook.add('KeyPress', '', function(ply, btn)
 	end
 end)
 hook.add('KeyRelease', '', function(ply, btn)
-	if ply ~= player or btn ~= IN_KEY.USE then
+	if ply ~= player or btn ~= IN_KEY.USE or not isFirstTimePredicted() then
 		return
 	end
 	used = false
