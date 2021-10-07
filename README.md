@@ -14,7 +14,7 @@ Additionally, the backend code is not well written and the API is not well desig
 5. Flash any MoneyDB compatible code to another chip (such as `casino/poker/init.lua`)
 
 ## Usage (developer)
-I have included sample code here. Additionally, see [moneydb/init_demo.lua](`moneydb/init_demo.lua`), the MoneyDB source code, as well as the source code of the ATM and poker machine.
+I have included sample code here. Additionally, see [`moneydb/init_demo.lua`](moneydb/init_demo.lua), the MoneyDB source code, as well as the source code of the ATM and poker machine.
 ```lua
 --@server
 --@include casino/moneydb/sv_lib.lua
@@ -24,37 +24,37 @@ moneydb.getBalance(owner(), function(success, balance)
 	print(string.format("Your balance: $%d", balance))
 end)
 ```
-The balance is a signed integer that has a bit width that is implementation defined, and stored in `MDB_MONEY_WIDTH`. It is important that you always use that constant rather than just assuming that it will stay the same, as corruption can occur if the wrong width is used. Constants are defined in [moneydb/sh_constants.lua](`moneydb/sh_constants.lua`).
+The balance is a signed integer that has a bit width that is implementation defined, and stored in `MDB_MONEY_WIDTH`. It is important that you always use that constant rather than just assuming that it will stay the same, as corruption can occur if the wrong width is used. Constants are defined in [`moneydb/sh_constants.lua`](moneydb/sh_constants.lua).
 
 ## API
 ***Entity or nil*** host `= moneydb.init(`***Player or nil*** owner of host`)`
 
 Looks for and finds any MoneyDB host chips owned by the provided owner, or the owner of the current chip if not specified. If a host is found, `moneydb.host` is set to it and it is returned. Otherwise, `nil` is returned.
 
-`moneydb.onInit(`***function*** callback, ***Player or nil*** owner of host`)`
+***void*** `moneydb.onInit(`***function*** callback, ***Player or nil*** owner of host`)`
 
 Similar to `moneydb.init`, but asynchronous. The callback will be called with a single parameter of `true` once a host is found. If no host is found, it will keep trying indefinitely.
 
-`moneydb.increaseBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
+***void*** `moneydb.increaseBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
 
 Increases the player's balance by a certain amount. The callback will be called with a single boolean parameter that is either `true` or `false` depending on whether the operation succeeded.
 
-`moneydb.decreaseBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
+***void*** `moneydb.decreaseBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
 
 Decreases the player's balance by a certain amount. The callback will be called with a single boolean parameter that is either `true` or `false` depending on whether the operation succeeded.
 
-`moneydb.transferMoney(`***Player or string*** source, ***Player or string*** destination, ***number*** amount, ***function*** callback`)`
+***void*** `moneydb.transferMoney(`***Player or string*** source, ***Player or string*** destination, ***number*** amount, ***function*** callback`)`
 
 Decreases the source player's balance by a certain amount, and increase's the destination player's balance by the same amount. The callback will be called with a single boolean parameter that is either `true` or `false` depending on whether the operation succeeded.
 
-`moneydb.getBalance(`***Player or string*** entity or SteamID, ***function*** callback`)`
+***void*** `moneydb.getBalance(`***Player or string*** entity or SteamID, ***function*** callback`)`
 
 Gets the player's balance. The callback will be called with a boolean parameter that is either `true` or `false` depending on whether the operation succeeded, and a number parameter corresponding to the player's balance.
 
-`moneydb.setBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
+***void*** `moneydb.setBalance(`***Player or string*** entity or SteamID, ***number*** amount, ***function*** callback`)`
 
 Sets the player's balance. The callback will be called with a single boolean parameter that is either `true` or `false` depending on whether the operation succeeded.
 
 ***number*** index `= moneydb.addToQueue(`***function*** callback, ***number*** action, ***varargs*** parameters`)`
 
-**For internal use only.** Manually injects an action into the queue. You should not use numbers directly as they are implementation defined, instead you should use the constants starting with `MDB_ACTION_`.
+**For internal use only.** Manually injects an action into the queue. You should not use numbers directly as they are implementation defined, instead you should use the constants starting with `MDB_ACTION_`. Needed parameters vary depending on the action.
